@@ -1,44 +1,30 @@
+// RNToDoApp/App.tsx
+
+import React from 'react';
+import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import TodoScreen from './src/screens/TodoScreen';
+
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
+ * Componente principal da aplicação.
+ * Envolve a tela principal em um SafeAreaView para garantir que o conteúdo
+ * não seja obscurecido por barras de status ou entalhes em dispositivos móveis.
  */
-
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
+const App = () => {
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
+    // SafeAreaView garante que o conteúdo seja renderizado em uma área segura
+    <SafeAreaView style={styles.container}>
+      {/* Define a cor da barra de status para se adequar ao tema claro */}
+      <StatusBar barStyle="dark-content" backgroundColor="#F5F5F5" />
+      {/* Renderiza a tela principal da lista de tarefas */}
+      <TodoScreen />
+    </SafeAreaView>
   );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#F5F5F5', // Cor de fundo consistente
   },
 });
 
