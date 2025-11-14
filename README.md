@@ -1,104 +1,97 @@
-> Este arquivo foi gerado para documentar o projeto RNToDoApp e substituir o README padrão.
+This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# RNToDoApp: Aplicativo de Agenda de Compromissos (Agenda App)
+# Getting Started
 
-## Descrição do Projeto
+> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
 
-Este é um aplicativo básico de **Agenda e Gerenciamento de Compromissos** desenvolvido em **React Native CLI** utilizando **TypeScript**. O projeto foi revisado para focar no agendamento de compromissos com data e hora, mantendo todos os requisitos obrigatórios de persistência de dados e organização de código, com comentários inline detalhados para fins de aprendizado.
+## Step 1: Start Metro
 
-## Tecnologias Utilizadas
+First, you will need to run **Metro**, the JavaScript build tool for React Native.
 
-*   **React Native CLI**: Estrutura principal para desenvolvimento de aplicativos móveis nativos.
-*   **TypeScript**: Linguagem de programação que adiciona tipagem estática ao JavaScript.
-*   **React Hooks**: Utilização de `useState`, `useEffect`, `useCallback` e `useMemo`.
-*   **AsyncStorage**: Biblioteca para persistência de dados.
-*   **`react-native-vector-icons`**: Para ícones visuais.
-*   **`@react-native-community/datetimepicker`**: Para seleção nativa de data e hora.
+To start the Metro dev server, run the following command from the root of your React Native project:
 
-## Funcionalidades Implementadas
+```sh
+# Using npm
+npm start
 
-*   **Agendamento Completo:** Adicionar compromissos com título, data e hora.
-*   **Persistência:** Dados salvos localmente com AsyncStorage.
-*   **Ordenação:** Compromissos ordenados por data e hora (mais próximos primeiro).
-*   **Controle de Status:** Marcar compromissos como concluídos.
-*   **Exclusão:** Remover compromissos com confirmação.
-
-## Estrutura de Pastas
-
-```
-RNToDoApp/
-├── src/
-│   ├── components/
-│   ├── screens/
-│   ├── services/
-│   ├── styles/
-│   └── types/
-└── ...
+# OR using Yarn
+yarn start
 ```
 
-## Instruções para Rodar o Aplicativo (Execução via USB)
+## Step 2: Build and run your app
 
-Este projeto requer a configuração do ambiente de desenvolvimento nativo (Android Studio).
+With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
 
-### Pré-requisitos Essenciais
+### Android
 
-1.  **Node.js** e **npm** instalados.
-2.  **React Native CLI** configurado.
-3.  **JDK 17** (ou superior) instalado e a variável de ambiente **`JAVA_HOME`** configurada corretamente.
-4.  **Android Studio** instalado.
-5.  **Cabo USB** para conectar o celular ao computador.
+```sh
+# Using npm
+npm run android
 
-### Configuração do Celular (Android)
+# OR using Yarn
+yarn android
+```
 
-Para rodar o app no seu celular físico, você deve ativar o modo desenvolvedor e a depuração USB:
+### iOS
 
-1.  **Ativar o Modo Desenvolvedor:**
-    *   Vá em `Configurações` > `Sobre o Telefone`.
-    *   Toque em `Número da Versão` (ou similar) **7 vezes** até ver a mensagem "Você agora é um desenvolvedor!".
-2.  **Ativar a Depuração USB:**
-    *   Vá em `Configurações` > `Sistema` > `Opções do Desenvolvedor`.
-    *   Ative a opção **Depuração USB**.
-3.  **Conexão USB:** Conecte o celular ao computador e selecione a opção **Transferência de Arquivos** (MTP) para a conexão USB.
+For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
 
-### Passos de Execução
+The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
 
-1.  **Navegue até o diretório do projeto:**
-    ```bash
-    cd RNToDoApp
-    ```
+```sh
+bundle install
+```
 
-2.  **Instale as dependências do Node:**
-    ```bash
-    npm install
-    ```
+Then, and every time you update your native dependencies, run:
 
-3.  **Verifique a Conexão do Dispositivo (Opcional, mas Recomendado):**
-    *   Em um terminal, execute: `adb devices`
-    *   Seu dispositivo deve aparecer listado com o status `device`. Se aparecer `unauthorized`, aceite a permissão de depuração USB no seu celular.
+```sh
+bundle exec pod install
+```
 
-4.  **Inicie o Servidor Metro (Passo 1 de 2):**
-    *   Abra um terminal e inicie o servidor Metro. **Mantenha este terminal aberto.**
-    ```bash
-    npx react-native start
-    ```
+For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
 
-5.  **Execute o Aplicativo no Celular (Passo 2 de 2):**
-    *   Abra um **NOVO terminal** e execute o comando para compilar e instalar o app no seu celular:
-    ```bash
-    npx react-native run-android
-    ```
-    *   **Aguarde:** A primeira compilação pode levar alguns minutos. O terminal mostrará o progresso do Gradle.
-    *   Ao finalizar, o aplicativo será instalado e aberto automaticamente no seu celular.
+```sh
+# Using npm
+npm run ios
 
-### Solução de Problemas de Conexão (Se o App Abrir, mas Ficar em Tela Branca)
+# OR using Yarn
+yarn ios
+```
 
-Se o aplicativo abrir, mas não carregar o JavaScript (tela branca ou erro de rede), o celular não está conseguindo acessar o servidor Metro no seu computador.
+If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
 
-1.  **Verifique a Rede:** Seu celular e computador devem estar na **mesma rede Wi-Fi**.
-2.  **Configurar o IP do Servidor (Se a Rede Wi-Fi não funcionar):**
-    *   Descubra o endereço IP local do seu computador (Ex: `192.168.1.10`).
-    *   No seu celular, abra o **Menu do Desenvolvedor** (agite o celular).
-    *   Vá em **"Settings"** (Configurações).
-    *   Selecione **"Debug server host & port for device"**.
-    *   Digite o IP do seu computador seguido da porta do Metro: `seu_ip_aqui:8081` (Ex: `192.168.1.10:8081`).
-    *   Volte e selecione **"Reload"** (Recarregar).
+This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+
+## Step 3: Modify your app
+
+Now that you have successfully run the app, let's make changes!
+
+Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+
+When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+
+- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
+- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+
+## Congratulations! :tada:
+
+You've successfully run and modified your React Native App. :partying_face:
+
+### Now what?
+
+- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
+- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+
+# Troubleshooting
+
+If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+
+# Learn More
+
+To learn more about React Native, take a look at the following resources:
+
+- [React Native Website](https://reactnative.dev) - learn more about React Native.
+- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
+- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
+- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
+- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
